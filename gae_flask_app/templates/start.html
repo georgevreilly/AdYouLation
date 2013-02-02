@@ -1,11 +1,19 @@
 {% extends "layout.html" %}
 {% block body %}
-  <ul class=entries>
-  {% for video in names %}
+  <h1>Choices</h1>
+  <ul class=choices>
+  {% for video in choices %}
     <li><h2>{{ video }}</h2>
   {% else %}
     <li><em>Unbelievable.  No entries here so far</em>
   {% endfor %}
   </ul>
-  Counter = {{ counter }}.
+  <h1>Remaining</h1>
+  <ul class=remaining>
+  {% for video in remaining %}
+    <li><h2>{{ video }}</h2>
+  {% else %}
+    <li><em>Unbelievable.  No entries here so far</em>
+  {% endfor %}
+  </ul>
 {% endblock %}
