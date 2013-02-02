@@ -1,0 +1,24 @@
+{
+  "videos": {
+    "bellringer": {
+      "url": "http://youtu.be/57M3rKfYnpg",
+      "title": "Bell Ringer at College Football Game",
+      "duration": 10
+    },
+    "supermariobros": {
+      "url": "http://youtu.be/yr_Rpk9HR1g",
+      "title": "Super Марио Brothers",
+      "duration": 7
+    },
+    "stapler": {
+      "url": "http://youtu.be/UiyDmqO59QE",
+      "title": "Missing",
+      "duration": 8
+    },
+    "karma": {
+      "url": "http://youtu.be/LVQVpuaB-nc",
+      "title": "Un Gol Bastante Raro",
+      "duration": 11
+    }
+  }
+}
