@@ -2,10 +2,25 @@ from ..AdYouLation import AdYouLation
 from flask import render_template, current_app, url_for, redirect
 from flask.ext.wtf import Form, TextField, RadioField, Required, Email
 from gaesessions import get_current_session
+from google.appengine.ext import db
 
 import random
 import logging
 import uuid
+
+class Video(db.Model):
+    name        = db.StringProperty(required = True)
+    up_votes    = db.IntegerProperty(required = True)
+    down_votes  = db.IntegerProperty(required = True)
+
+@AdYouLation.route('/_reset_votes')
+def reset_votes():
+    videos = current_app.videos["videos"]
+    results = []
+    for video in videos:
+        model = Video(name=video, up_votes=0, down_votes=0)
+        model.put()
+    return render_template("reset_votes.html")
 
 def create_playlist():
     videos = current_app.videos
