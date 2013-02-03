@@ -1,12 +1,13 @@
 {% extends "layout.html" %}
 {% block body %}
   <h1>Vote</h1>
-    {% from "forms/macros.html" import render_field %}
+    {% from "forms/macros.html" import render_field, render_video %}
     <form method="POST" action="." class="form">
-      {{ video1 }}
-      {{ render_field(form.email) }}
+      {{ render_video(video1) }}
+      {{ render_field(form.video1Vote) }}
       <br/>
-      {{ video2 }}
-      <input type="submit" value="Login" class="button green">
+      {{ render_video(video2) }}
+      {{ render_field(form.video2Vote) }}
+      <input type="submit" value="Vote" class="button green">
     </form>
 {% endblock %}

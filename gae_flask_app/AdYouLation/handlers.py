@@ -25,9 +25,9 @@ def start():
     return render_template("start.html", choices=choices, remaining=remaining)
 
 class VoteForm(Form):
-#   Video1Vote = RadioField(choices=("Yes!", "No!"))
-#   Video2Vote = RadioField(choices=("Win!", "Lose!"))
-    email = TextField('email address', [Required(), Email()])
+    CHOICES = (("UP", "Yes!"), ("down", "No!"))
+    video1Vote = RadioField("video #1", choices=CHOICES)
+    video2Vote = RadioField("video #2", choices=CHOICES)
 
 @AdYouLation.route('/vote', methods=('GET', 'POST'))
 def vote():
