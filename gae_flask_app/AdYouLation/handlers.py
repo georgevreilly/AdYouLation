@@ -3,6 +3,7 @@ from flask import render_template, current_app
 from flask.ext.wtf import Form, TextField, RadioField, Required, Email
 from gaesessions import get_current_session
 import random
+import logging
 
 def create_playlist():
     videos = current_app.videos
@@ -24,17 +25,27 @@ def start():
     choices, remaining = update_playlist()
     return render_template("start.html", choices=choices, remaining=remaining)
 
-class VoteForm(Form):
+class VideoVote(RadioField):
     CHOICES = (("UP", "Yes!"), ("down", "No!"))
-    video1Vote = RadioField("video #1", choices=CHOICES)
-    video2Vote = RadioField("video #2", choices=CHOICES)
+
+def vote_form(videos):
+    class VoteForm(Form):
+        pass
+
+    for index, video in enumerate(videos):
+        name = "video_{}".format(index+1)
+        field = VideoVote(video, validators=[Required()], choices=VideoVote.CHOICES)
+        setattr(VoteForm, name, field)
+
+    return VoteForm()
 
 @AdYouLation.route('/vote', methods=('GET', 'POST'))
 def vote():
-    form = VoteForm()
+    choices, remaining = update_playlist()
+    form = vote_form(choices)
+    logging.info(dir(form))
     if form.validate_on_submit():
         flash("Success")
         return redirect(url_for("start"))
     else:
-        choices, remaining = update_playlist()
-        return render_template("vote.html", form=form, video1=choices[0], video2=choices[1])
+        return render_template("vote.html", form=form)

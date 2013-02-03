@@ -3,11 +3,12 @@
   <h1>Vote</h1>
     {% from "forms/macros.html" import render_field, render_video %}
     <form method="POST" action="." class="form">
-      {{ render_video(video1) }}
-      {{ render_field(form.video1Vote) }}
-      <br/>
-      {{ render_video(video2) }}
-      {{ render_field(form.video2Vote) }}
-      <input type="submit" value="Vote" class="button green">
+        <table>
+            <tr>
+                <td class="video-choice">{{ render_video(form.video_1) }}</td>
+                <td class="video-choice">{{ render_video(form.video_2) }}</td>
+            </tr>
+        <table>
+        <input type="submit" value="Vote" class="button green">
     </form>
 {% endblock %}
