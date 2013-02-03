@@ -22,10 +22,22 @@ def reset_votes():
         model.put()
     return render_template("reset_votes.html")
 
-@AdYouLation.route('/show_votes')
-def show_votes():
-    results = VideoVotes.all()
-    return render_template("show_votes.html", results=results)
+class Score(object):
+    def __init__(self, name, up, down):
+        self.name = name
+        self.up = up
+        self.down = down
+        self.score = up - down
+
+def calculate_leaderboard():
+    videos = current_app.videos["videos"]
+    scores = [Score(vv.name, vv.up_votes, vv.down_votes)
+              for vv in VideoVotes.all() if vv.name in videos]
+    return sorted(scores, key=lambda s: s.score, reverse=True)
+
+@AdYouLation.route('/leaderboard')
+def leaderboard():
+    return render_template("show_votes.html", scores=calculate_leaderboard())
 
 def create_playlist():
     videos = current_app.videos
@@ -43,7 +55,7 @@ def get_choices_remaining(index=2):
 def update_playlist():
     (choices, remaining) = get_choices_remaining()
     get_current_session()['playlist'] = remaining
-    return (choices, remaining)
+    return len(remaining) > 0
 
 @AdYouLation.route('/start')
 def start():
@@ -94,7 +106,9 @@ def vote():
     form = vote_form(choices)
     if form.validate_on_submit():
         record_vote(form)
-        update_playlist()
-        return redirect(url_for(".vote"))
+        if update_playlist():
+            return redirect(url_for(".vote"))
+        else:
+            return redirect(url_for(".leaderboard"))
     else:
         return render_template("vote.html", form=form, remaining=remaining, id=id)
