@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+{% block body %}
+  <h1>Leaderboard</h1>
+  <ul>
+    {% for vv in results %}
+        <li>{{ vv.name }}: up={{ vv.up_votes }}, down={{ vv.down_votes }}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

@@ -8,7 +8,7 @@ import random
 import logging
 import uuid
 
-class Video(db.Model):
+class VideoVotes(db.Model):
     name        = db.StringProperty(required = True)
     up_votes    = db.IntegerProperty(required = True)
     down_votes  = db.IntegerProperty(required = True)
@@ -18,9 +18,14 @@ def reset_votes():
     videos = current_app.videos["videos"]
     results = []
     for video in videos:
-        model = Video(name=video, up_votes=0, down_votes=0)
+        model = VideoVotes(name=video, up_votes=0, down_votes=0)
         model.put()
     return render_template("reset_votes.html")
+
+@AdYouLation.route('/show_votes')
+def show_votes():
+    results = VideoVotes.all()
+    return render_template("show_votes.html", results=results)
 
 def create_playlist():
     videos = current_app.videos
