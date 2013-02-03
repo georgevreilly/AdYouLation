@@ -1,13 +1,18 @@
 {% extends "layout.html" %}
 {% block body %}
   <h1 class="banner">AdYouLation—Vote for Super Bowl XLVII Ads</h1>
-  <p>Vote on the best Superbowl Ad!
-      Predict the most popular ad!
-      Watch the Superbowl ads, choosing the ones you like the most,
-      then vote for the best of the lot by texting to our number.
-      See if you can predict the most popular ads!</p>
-
   <div class="get-started">
-      <a href="{{ url_for('.vote') }}">Let's get started</a>
+      <p>Vote on the best Superbowl Ad!
+          Predict the most popular ad!</p>
+
+      <p>Watch the Superbowl ads, choosing the ones you like the most,
+          then vote for the best of the lot by texting to our number.
+          See if you can predict the most popular ads!</p>
+
+      <div>
+          <a href="{{ url_for('.vote') }}">
+              <button class="btn btn-primary btn-large">Let's get started</button>
+          </a>
+      </div>
   </div>
 {% endblock %}

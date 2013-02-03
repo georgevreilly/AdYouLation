@@ -18,14 +18,6 @@ h1.banner {
 
 div.get-started {
   width: 500px;
-  background-color: orange;
-  font-size: 2em;
-  padding-left: 2ex;
-  padding-right: 2ex;
-}
-
-div.get-started a {
-  text-decoration: none;
 }
 
 td.video-between div,
