@@ -53,8 +53,8 @@ def start():
         session['id'] = uuid.uuid4()
     return render_template("start.html")
 
-class VideoVote(RadioField):
-    CHOICES = (("UP", "Yes!"), ("down", "No!"))
+class VideoChoice(RadioField):
+    CHOICES = (("up", "Yes!"), ("down", "No!"))
 
 def vote_form(videos):
     class VoteForm(Form):
@@ -62,10 +62,22 @@ def vote_form(videos):
 
     for index, video in enumerate(videos):
         name = "video_{}".format(index+1)
-        field = VideoVote(video, validators=[Required()], choices=VideoVote.CHOICES)
+        field = VideoChoice(video, validators=[Required()], choices=VideoChoice.CHOICES)
         setattr(VoteForm, name, field)
 
     return VoteForm()
+
+def record_vote(form):
+    for index in [1, 2]:
+        attrname = "video_{}".format(index)
+        name = getattr(form, attrname).label.text
+        data = getattr(form, attrname).data
+        vv = VideoVotes.gql("WHERE name = :1", name).get()
+        if data == "up":
+            vv.up_votes += 1
+        else:
+            vv.down_votes += 1
+        vv.put()
 
 @AdYouLation.route('/vote', methods=('GET', 'POST'))
 def vote():
@@ -74,5 +86,6 @@ def vote():
     form = vote_form(choices)
     if form.validate_on_submit():
         update_playlist()
+        record_vote(form)
         return redirect(url_for(".vote"))
     return render_template("vote.html", form=form, remaining=remaining, id=id)
