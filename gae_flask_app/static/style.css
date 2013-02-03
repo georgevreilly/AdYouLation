@@ -50,6 +50,22 @@ div.video_field li {
   margin: 10px 50px;
 }
 
+/*
+div.video_field li {
+  background-image: url("thumbs-sprite.jpg");
+  width: 74px;
+  height: 85px;
+}
+
+div.video_field ul input[value="up"] {
+  background-position: 18px 24px;
+}
+
+div.video_field ul input[value="down"] {
+  background-position: 18px 156px;
+}
+*/
+
 div.vote {
   padding: 10px 480px;
 }
