@@ -4,14 +4,14 @@
 }
 
 td.video-choice div {
-  width: 300px;
+  width: 500px;
   border-style: dotted;
   margin-right: 30px;
   padding: 10px;
 }
 
 div.get-started {
-  width: 300px;
+  width: 500px;
   background-color: orange;
   font-size: 2em;
   padding-left: 2ex;

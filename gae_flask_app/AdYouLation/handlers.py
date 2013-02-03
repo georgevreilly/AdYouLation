@@ -37,8 +37,8 @@ def get_choices_remaining(index=2):
     session = get_current_session()
     playlist = session.get('playlist')
     if not playlist:
-        playlist = create_playlist()
-    return playlist[:2], playlist[2:]
+        playlist = session['playlist'] = create_playlist()
+    return playlist[:index], playlist[index:]
 
 def update_playlist():
     (choices, remaining) = get_choices_remaining()
@@ -53,16 +53,20 @@ def start():
         session['id'] = uuid.uuid4()
     return render_template("start.html")
 
-class VideoChoice(RadioField):
-    CHOICES = (("up", "Yes!"), ("down", "No!"))
 
-def vote_form(videos):
+def vote_form(choices):
     class VoteForm(Form):
         pass
 
-    for index, video in enumerate(videos):
+    CHOICES = (("up", "Yes!"), ("down", "No!"))
+    videos = current_app.videos["videos"]
+
+    for index, choice in enumerate(choices):
+        class VideoChoice(RadioField):
+            ytid = videos[choice]['ytid']
+
         name = "video_{}".format(index+1)
-        field = VideoChoice(video, validators=[Required()], choices=VideoChoice.CHOICES)
+        field = VideoChoice(choice, validators=[Required()], choices=CHOICES)
         setattr(VoteForm, name, field)
 
     return VoteForm()
@@ -85,7 +89,8 @@ def vote():
     id = get_current_session()['id']
     form = vote_form(choices)
     if form.validate_on_submit():
-        update_playlist()
         record_vote(form)
+        update_playlist()
         return redirect(url_for(".vote"))
-    return render_template("vote.html", form=form, remaining=remaining, id=id)
+    else:
+        return render_template("vote.html", form=form, remaining=remaining, id=id)

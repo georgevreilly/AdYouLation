@@ -1,17 +1,17 @@
 {
   "videos": {
     "godaddy": {
-      "url": "http://youtu.be/o-3j4-4N3Ng",
+      "ytid": "o-3j4-4N3Ng",
       "title": "Perfect Match - Bar Refaeli's Big Kiss!",
       "duration": 10
     },
     "hyundai": {
-      "url": "http://youtu.be/3jEU7yd4yuI",
+      "ytid": "3jEU7yd4yuI",
       "title": "2013 Hyundai Santa Fe | \"Don't Tell\"",
       "duration": 10
     },
     "budweiser": {
-      "url": "http://youtu.be/o2prAccclXs",
+      "ytid": "o2prAccclXs",
       "title": "The Clydesdales: \"Brotherhood\"",
       "duration": 10
     }

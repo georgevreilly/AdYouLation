@@ -1,62 +1,62 @@
 {
   "videos": {
     "bellringer": {
-      "url": "http://youtu.be/57M3rKfYnpg",
+      "ytid": "57M3rKfYnpg",
       "title": "Bell Ringer at College Football Game",
       "duration": 10
     },
     "supermariobros": {
-      "url": "http://youtu.be/yr_Rpk9HR1g",
+      "ytid": "yr_Rpk9HR1g",
       "title": "Super Марио Brothers",
       "duration": 7
     },
     "stapler": {
-      "url": "http://youtu.be/UiyDmqO59QE",
+      "ytid": "UiyDmqO59QE",
       "title": "Missing",
       "duration": 8
     },
     "karma": {
-      "url": "http://youtu.be/LVQVpuaB-nc",
+      "ytid": "LVQVpuaB-nc",
       "title": "Un Gol Bastante Raro",
       "duration": 11
     },
     "signpunch": {
-      "url": "http://youtu.be/rZt0avHRR00",
+      "ytid": "rZt0avHRR00",
       "title": "This is why you don't punch street signs",
       "duration": 5
     },
     "cocaine": {
-      "url": "http://youtu.be/CmC62Eg82E8",
+      "ytid": "CmC62Eg82E8",
       "title": "Henry the Hoover's cocaine overdose",
       "duration": 17
     },
     "i_so_pale": {
-      "url": "http://youtu.be/ab0ddj6hadM",
+      "ytid": "ab0ddj6hadM",
       "title": "I So Pale FAIL news blooper 2012",
       "duration": 15
     },
     "primeval5": {
-      "url": "http://youtu.be/FI3r73XJ7xU",
+      "ytid": "FI3r73XJ7xU",
       "title": "Primeval Series 5 Clip",
       "duration": 6
     },
     "failing": {
-      "url": "http://youtu.be/_E_-Qt66XBY",
+      "ytid": "_E_-Qt66XBY",
       "title": "You are Failing",
       "duration": 3
     },
     "shutup": {
-      "url": "http://youtu.be/CEgh8TUlpQc",
+      "ytid": "CEgh8TUlpQc",
       "title": "SHUT UP",
       "duration": 5
     },
     "please_no": {
-      "url": "http://youtu.be/umDr0mPuyQc",
+      "ytid": "umDr0mPuyQc",
       "title": "NO GOD! PLEASE NO!!! NOOOOOOOOOO",
       "duration": 17
     },
     "aww_hell_naw": {
-      "url": "http://youtu.be/im_5QdHp04E",
+      "ytid": "im_5QdHp04E",
       "title": "AWW HELL NAW",
       "duration": 3
     }
