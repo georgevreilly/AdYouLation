@@ -1,9 +1,14 @@
 {% extends "layout.html" %}
 {% block body %}
   <h1>Leaderboard</h1>
-  <ul>
+  <table border="1">
+      <tr><th>Video</th> <th>Up</th> <th>Down</th></tr>
     {% for vv in results %}
-        <li>{{ vv.name }}: up={{ vv.up_votes }}, down={{ vv.down_votes }}</li>
+        <tr>
+            <td>{{ vv.name }}</td>
+            <td>{{ vv.up_votes }}</td>
+            <td>{{ vv.down_votes }}</td>
+        </tr>
     {% endfor %}
-  </ul>
+  </table>
 {% endblock %}
