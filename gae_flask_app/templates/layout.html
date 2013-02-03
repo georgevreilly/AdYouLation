@@ -1,11 +1,15 @@
 <!doctype html>
 <title>AdYouLation</title>
-<link href="{{ url_for('static', filename='headpiece.css') }}" rel="stylesheet" type="text/css" media="all" />
+{% if True %}
+    <link rel="stylesheet" href="https://app.divshot.com/css/bootstrap.css">
+    <link rel="stylesheet" href="https://app.divshot.com/css/bootstrap-responsive.css"> 
+{% else %}
+    <link href="{{ url_for('static', filename='headpiece.css') }}" rel="stylesheet" type="text/css" media="all" />
+{% endif %}
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
 <link href='http://fonts.googleapis.com/css?family=Quando' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 <div class=page>
-  <h1 class="banner">AdYouLation—Vote for Super Bowl XLVII Ads</h1>
   {% for message in get_flashed_messages() %}
     <div class=flash>{{ message }}</div>
   {% endfor %}

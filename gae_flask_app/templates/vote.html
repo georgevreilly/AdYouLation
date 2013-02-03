@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block body %}
-  <h1>Vote</h1>
+  <h1 class="banner">AdYouLation—Vote for Super Bowl XLVII Ads</h1>
     {% from "forms/macros.html" import render_field, render_video %}
     <form method="POST" action="{{ url_for(".vote") }}" class="form">
         {{ form.csrf_token }}
@@ -8,12 +8,19 @@
             <tr>
                 <td class="video-choice">{{ render_video(form.video_1) }}</td>
                 {% if form.video_2 %}
+                <td class="video-between">
+                    <div>vs.</div>
+                </td>
                 <td class="video-choice">{{ render_video(form.video_2) }}</td>
                 {% endif %}
             </tr>
         <table>
-        <input type="submit" value="Vote" class="button green">
+        <div class="vote">
+            <input type="submit" value="Vote" class="btn btn-primary btn-large">
+        </div>
     </form>
+    <!--
     <p>{{ remaining }}</p>
     <p>ID: {{ id }}</p>
+    -->
 {% endblock %}
