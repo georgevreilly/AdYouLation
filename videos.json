@@ -2,18 +2,31 @@
   "videos": {
     "godaddy": {
       "ytid": "o-3j4-4N3Ng",
-      "title": "Perfect Match - Bar Refaeli's Big Kiss!",
-      "duration": 10
+      "title": "Perfect Match - Bar Refaeli's Big Kiss!"
     },
     "hyundai": {
       "ytid": "3jEU7yd4yuI",
-      "title": "2013 Hyundai Santa Fe | \"Don't Tell\"",
-      "duration": 10
+      "title": "2013 Hyundai Santa Fe | \"Don't Tell\""
     },
     "budweiser": {
       "ytid": "o2prAccclXs",
-      "title": "The Clydesdales: \"Brotherhood\"",
-      "duration": 10
+      "title": "The Clydesdales: \"Brotherhood\""
+    },
+    "skechers": {
+      "ytid": "cuBwAE14L4c",
+      "title": "Skechers: \"Man VS Cheetah\""
+    },
+    "mercedes": {
+      "ytid": "oPNr0_6MnDo",
+      "title": "Mercedes Benzy: \"Soul\""
+    },
+    "banned": {
+      "ytid": "DFhh7V-BcCQ",
+      "title": "Banned: \"Jackson Hewitt Commercial\""
+    },
+    "hyundai": {
+      "ytid": "CAe-06mUHkI",
+      "title": "Hyundai: \"Playdate\""
     }
   }
 }
