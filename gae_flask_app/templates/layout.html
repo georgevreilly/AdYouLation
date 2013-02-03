@@ -1,6 +1,8 @@
 <!doctype html>
 <title>AdYouLation</title>
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<link href="http://fonts.googleapis.com/css?family=Archivo+Narrow:400,700" rel="stylesheet" type="text/css" />
+<link href="{{ url_for('static', filename='headpiece.css') }}" rel="stylesheet" type="text/css" media="all" />
 <div class=page>
   <h1>AdYouLation—Vote for Super Bowl XLVII Ads</h1>
   {% for message in get_flashed_messages() %}
