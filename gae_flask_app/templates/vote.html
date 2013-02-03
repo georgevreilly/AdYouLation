@@ -7,7 +7,9 @@
         <table>
             <tr>
                 <td class="video-choice">{{ render_video(form.video_1) }}</td>
+                {% if form.video_2 %}
                 <td class="video-choice">{{ render_video(form.video_2) }}</td>
+                {% endif %}
             </tr>
         <table>
         <input type="submit" value="Vote" class="button green">

@@ -74,14 +74,18 @@ def vote_form(choices):
 def record_vote(form):
     for index in [1, 2]:
         attrname = "video_{}".format(index)
-        name = getattr(form, attrname).label.text
-        data = getattr(form, attrname).data
-        vv = VideoVotes.gql("WHERE name = :1", name).get()
-        if data == "up":
-            vv.up_votes += 1
-        else:
-            vv.down_votes += 1
-        vv.put()
+        if hasattr(form, attrname):
+            attr = getattr(form, attrname)
+            name = attr.label.text
+            data = attr.data
+            vv = VideoVotes.gql("WHERE name = :1", name).get()
+            if not vv:
+                vv = VideoVotes(name=name, up_votes=0, down_votes=0)
+            if data == "up":
+                vv.up_votes += 1
+            else:
+                vv.down_votes += 1
+            vv.put()
 
 @AdYouLation.route('/vote', methods=('GET', 'POST'))
 def vote():
