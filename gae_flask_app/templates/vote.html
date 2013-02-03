@@ -2,7 +2,8 @@
 {% block body %}
   <h1>Vote</h1>
     {% from "forms/macros.html" import render_field, render_video %}
-    <form method="POST" action="." class="form">
+    <form method="POST" action="{{ url_for(".vote") }}" class="form">
+        {{ form.csrf_token }}
         <table>
             <tr>
                 <td class="video-choice">{{ render_video(form.video_1) }}</td>
@@ -11,4 +12,5 @@
         <table>
         <input type="submit" value="Vote" class="button green">
     </form>
+    <p>{{ remaining }}</p>
 {% endblock %}

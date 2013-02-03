@@ -1,5 +1,5 @@
 from ..AdYouLation import AdYouLation
-from flask import render_template, current_app
+from flask import render_template, current_app, url_for, redirect
 from flask.ext.wtf import Form, TextField, RadioField, Required, Email
 from gaesessions import get_current_session
 import random
@@ -11,13 +11,17 @@ def create_playlist():
     random.shuffle(keys)
     return keys
 
-def update_playlist():
+def get_choices_remaining(index=2):
     session = get_current_session()
     playlist = session.get('playlist')
     if not playlist:
         playlist = create_playlist()
-    choices = playlist[:2]
-    session['playlist'] = remaining = playlist[2:]
+    return playlist[:2], playlist[2:]
+
+def update_playlist():
+    (choices, remaining) = get_choices_remaining()
+    session = get_current_session()
+    session['playlist'] = remaining
     return (choices, remaining)
 
 @AdYouLation.route('/start')
@@ -41,11 +45,9 @@ def vote_form(videos):
 
 @AdYouLation.route('/vote', methods=('GET', 'POST'))
 def vote():
-    choices, remaining = update_playlist()
+    choices, remaining = get_choices_remaining()
     form = vote_form(choices)
-    logging.info(dir(form))
     if form.validate_on_submit():
-        flash("Success")
-        return redirect(url_for("start"))
-    else:
-        return render_template("vote.html", form=form)
+        update_playlist()
+        return redirect(url_for(".vote"))
+    return render_template("vote.html", form=form, remaining=remaining)
