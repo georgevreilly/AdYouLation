@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block body %}
+  <h1>Vote</h1>
+    {% from "forms/macros.html" import render_field %}
+    <form method="POST" action="." class="form">
+      {{ video1 }}
+      {{ render_field(form.email) }}
+      <br/>
+      {{ video2 }}
+      <input type="submit" value="Login" class="button green">
+    </form>
+{% endblock %}
