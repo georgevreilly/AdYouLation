@@ -1,19 +1,13 @@
 {% extends "layout.html" %}
 {% block body %}
-  <h1>Choices</h1>
-  <ul class=choices>
-  {% for video in choices %}
-    <li><h2>{{ video }}</h2>
-  {% else %}
-    <li><em>Unbelievable.  No entries here so far</em>
-  {% endfor %}
-  </ul>
-  <h1>Remaining</h1>
-  <ul class=remaining>
-  {% for video in remaining %}
-    <li><h2>{{ video }}</h2>
-  {% else %}
-    <li><em>Unbelievable.  No entries here so far</em>
-  {% endfor %}
-  </ul>
+  <h1>Vote for Your Favorite Super Bowl Ads</h1>
+  <p>Vote on the best Superbowl Ad!
+      Predict the most popular ad!
+      Watch the Superbowl ads, choosing the ones you like the most,
+      then vote for the best of the lot by texting to our number.
+      See if you can predict the most popular ads!</p>
+
+  <div class="get-started">
+      <a href="{{ url_for('.vote') }}">Let's get started</a>
+  </div>
 {% endblock %}

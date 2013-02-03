@@ -9,3 +9,15 @@ td.video-choice div {
   margin-right: 30px;
   padding: 10px;
 }
+
+div.get-started {
+  width: 300px;
+  background-color: orange;
+  font-size: 2em;
+  padding-left: 2ex;
+  padding-right: 2ex;
+}
+
+div.get-started a {
+  text-decoration: none;
+}
